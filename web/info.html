@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerritorioPoker - Find Your Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ce1212',
+                        dark: '#000000',
+                        light: '#ffffff'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .chip-stack {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        .chip {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+    </style>
+</head>
+<body class="bg-dark text-light font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-dark/95 backdrop-blur-sm z-50 border-b border-primary/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="chip-stack">
+                        <div class="chip bg-primary" style="left: 0; top: 0;"></div>
+                        <div class="chip bg-primary" style="left: 5px; top: -5px; opacity: 0.8;"></div>
+                        <div class="chip bg-primary" style="left: 10px; top: -10px; opacity: 0.6;"></div>
+                    </div>
+                    <span class="text-2xl font-bold">Territorio<span class="text-primary">Poker</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="hover:text-primary transition">Features</a>
+                    <a href="#how-it-works" class="hover:text-primary transition">How It Works</a>
+                    <a href="#timeline" class="hover:text-primary transition">Roadmap</a>
+                </div>
+                <div class="flex space-x-4">
+                    <button class="px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition">
+                        Login
+                    </button>
+                    <button class="px-4 py-2 bg-primary text-white hover:bg-red-700 rounded-lg transition">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-dark to-dark"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center animate-fadeInUp">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    Find Your Perfect <br/>
+                    <span class="text-primary">Poker Game</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                    Discover nearby poker rooms, join tournaments, and connect with the poker community in your territory
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="px-8 py-4 bg-primary text-white text-lg font-semibold rounded-lg hover:bg-red-700 transition transform hover:scale-105">
+                        Get Started Now
+                    </button>
+                    <button class="px-8 py-4 border-2 border-primary text-primary text-lg font-semibold rounded-lg hover:bg-primary hover:text-white transition">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 bg-gradient-to-b from-dark to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                Everything You Need to <span class="text-primary">Play</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition transform hover:scale-105">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Find Nearby Rooms</h3>
+                    <p class="text-gray-400">Discover poker rooms and casinos in your area with real-time availability and GPS navigation</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition transform hover:scale-105">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Live Tournaments</h3>
+                    <p class="text-gray-400">Browse and register for upcoming tournaments with buy-ins, prize pools, and blind structures</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition transform hover:scale-105">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Secure Payments</h3>
+                    <p class="text-gray-400">Integrated payment system for buy-ins, registrations, and secure payout management</p>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition transform hover:scale-105">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Community Forum</h3>
+                    <p class="text-gray-400">Connect with players, share strategies, and stay updated with the local poker scene</p>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition transform hover:scale-105">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Verified Venues</h3>
+                    <p class="text-gray-400">All poker rooms are verified with reviews, ratings, and compliance information</p>
+                </div>
+
+                <!-- Feature Card 6 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition transform hover:scale-105">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Real-Time Updates</h3>
+                    <p class="text-gray-400">Live seat availability, blind levels, and tournament progress with WebSocket technology</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 px-4 bg-dark">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                How It <span class="text-primary">Works</span>
+            </h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Sign Up</h3>
+                    <p class="text-gray-400">Create your account with secure verification and unique ID generation</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Find Games</h3>
+                    <p class="text-gray-400">Browse nearby poker rooms, tournaments, and cash games in real-time</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Register & Pay</h3>
+                    <p class="text-gray-400">Secure payment integration for seamless buy-ins and tournament registration</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">4</div>
+                    <h3 class="text-xl font-bold mb-2">Play & Win</h3>
+                    <p class="text-gray-400">Show up, play your game, and track your performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Timeline -->
+    <section id="timeline" class="py-20 px-4 bg-gradient-to-b from-gray-900 to-dark">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                Development <span class="text-primary">Roadmap</span>
+            </h2>
+            
+            <div class="space-y-8">
+                <!-- Phase 1 - COMPLETED -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-gray-800 p-6 rounded-lg border border-green-600">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-green-500">Phase 1: Foundation (COMPLETED)</h3>
+                            <span class="text-sm text-green-500 font-semibold">✓ DONE</span>
+                        </div>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>✓ User Authentication (Login, Register, Forgot Password)</li>
+                            <li>✓ Splash & Onboarding Screens</li>
+                            <li>✓ Terms & Conditions</li>
+                            <li>✓ Unique ID Generation & Verification</li>
+                            <li>✓ Chat/Forum System</li>
+                            <li>✓ Coach Application System</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 - IN PROGRESS -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center animate-pulse">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-gray-800 p-6 rounded-lg border border-primary">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-primary">Phase 2: Core Gaming (IN PROGRESS)</h3>
+                            <span class="text-sm text-primary font-semibold">Week 1-3</span>
+                        </div>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Poker Room Discovery & Listing</li>
+                            <li>• Casino Environment Setup</li>
+                            <li>• Game Types & Variants Configuration</li>
+                            <li>• Real-time Seat Availability</li>
+                            <li>• Location Services & GPS Integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center">
+                            <span class="text-xl font-bold">3</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold">Phase 3: Payment & Tournaments</h3>
+                            <span class="text-sm text-gray-400 font-semibold">Week 4-5</span>
+                        </div>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Payment Gateway Integration</li>
+                            <li>• Buy-in & Payout System</li>
+                            <li>• Tournament Management</li>
+                            <li>• Registration & Scheduling</li>
+                            <li>• Secure Transaction Handling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center">
+                            <span class="text-xl font-bold">4</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold">Phase 4: Enhanced Features</h3>
+                            <span class="text-sm text-gray-400 font-semibold">Week 6-7</span>
+                        </div>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Reviews & Ratings System</li>
+                            <li>• Real-time Notifications (WebSocket)</li>
+                            <li>• Admin Dashboard & Analytics</li>
+                            <li>• Player Statistics & Tracking</li>
+                            <li>• Advanced Search & Filters</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center">
+                            <span class="text-xl font-bold">5</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold">Phase 5: Polish & Launch</h3>
+                            <span class="text-sm text-gray-400 font-semibold">Week 8</span>
+                        </div>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Performance Optimization</li>
+                            <li>• Security Audit & Testing</li>
+                            <li>• Bug Fixes & QA</li>
+                            <li>• App Store Submission</li>
+                            <li>• Production Deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-xl text-gray-400 mb-4">Estimated Total Timeline: <span class="text-primary font-bold">8 Weeks</span></p>
+                <p class="text-gray-500">Timeline may vary based on API integration complexity and testing requirements</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 bg-gradient-to-r from-primary/20 to-dark">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Join the Action?</h2>
+            <p class="text-xl text-gray-400 mb-8">Be among the first to experience the future of poker room discovery</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-4 bg-primary text-white text-lg font-semibold rounded-lg hover:bg-red-700 transition">
+                    Download Beta App
+                </button>
+                <button class="px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white hover:text-dark transition">
+                    Contact Sales
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-4 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">TerritorioPoker</h4>
+                    <p class="text-gray-400">Find your perfect poker game, anytime, anywhere.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary">Features</a></li>
+                        <li><a href="#" class="hover:text-primary">Pricing</a></li>
+                        <li><a href="#" class="hover:text-primary">For Venues</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary">About</a></li>
+                        <li><a href="#" class="hover:text-primary">Blog</a></li>
+                        <li><a href="#" class="hover:text-primary">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary">Privacy</a></li>
+                        <li><a href="#" class="hover:text-primary">Terms</a></li>
+                        <li><a href="#" class="hover:text-primary">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 TerritorioPoker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
