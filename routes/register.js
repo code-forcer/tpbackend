@@ -1,4 +1,3 @@
-// backend/routes/auth.js
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -34,18 +33,12 @@ transporter.verify((error, success) => {
   }
 });
 
-// Generate unique wallet ID
-const generateWalletId = async () => {
-  const count = await User.countDocuments();
-  const padded = String(1000 + count + 1).slice(-4);
-  const year = new Date().getFullYear();
-  return `TP${year}${padded}`;
-};
+// ❌ REMOVED: generateWalletId function (model handles this now)
 
 // Generate random 6-digit OTP
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
-// Email template (keeping your existing template)
+// Email template
 const getEmailTemplate = (name, otp, walletId) => {
 return `
 <!DOCTYPE html>
@@ -123,12 +116,12 @@ const sendVerificationEmail = async (userEmail, name, otp, walletId) => {
 // FIXED: Enhanced registration route
 router.post('/register', async (req, res) => {
   try {
-    // FIXED: Extract all fields including address and email
+    // Extract all fields including address and email
     const { username, email, phone, address, password } = req.body;
     
     console.log('Registration attempt:', { username, email, phone, address, hasPassword: !!password });
     
-    // FIXED: Validation for all required fields
+    // Validation for all required fields
     if (!username || !email || !phone || !address || !password) {
       return res.status(400).json({ 
         message: 'All fields are required',
@@ -155,7 +148,11 @@ router.post('/register', async (req, res) => {
 
     // Check for existing user
     const existingUser = await User.findOne({ 
-      $or: [{ email: email.toLowerCase().trim() }, { phone: phone.trim() }, { username: username.trim() }] 
+      $or: [
+        { email: email.toLowerCase().trim() }, 
+        { phone: phone.trim() }, 
+        { username: username.trim() }
+      ] 
     });
     
     if (existingUser) {
@@ -173,28 +170,31 @@ router.post('/register', async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
     
-    // Generate unique identifiers
-    const walletId = await generateWalletId();
+    // Generate OTP and expiry
     const otp = generateOTP();
     const otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
-    // FIXED: Create new user with all fields
+    // ✅ FIXED: Create new user WITHOUT walletId (model generates it automatically)
     const newUser = new User({
       username: username.trim(),     
       email: email.toLowerCase().trim(),
       phone: phone.trim(),
-      address: address.trim(), // FIXED: Added address
+      address: address.trim(),
       password: hashedPassword,
-      // REMOVED: role (not needed unless you have different user types)
-      walletId,
+      // walletId will be generated automatically by the model's pre-save hook
       otp,
       otpExpires,
       isVerified: false,
       createdAt: new Date()
     });
 
+    // Save user (this triggers the pre-save hook that generates walletId)
     await newUser.save();
     console.log('User saved successfully:', newUser._id);
+    
+    // ✅ FIXED: Access the auto-generated walletId AFTER save
+    const walletId = newUser.walletId;
+    console.log('Generated walletId:', walletId);
 
     // Send verification email
     try {
@@ -202,7 +202,7 @@ router.post('/register', async (req, res) => {
       
       return res.status(201).json({ 
         message: 'Registration successful! Please check your email to verify your account.',
-        userId: newUser._id.toString(), // ADDED: Return userId for frontend
+        userId: newUser._id.toString(),
         walletId,
         emailSent: true
       });
