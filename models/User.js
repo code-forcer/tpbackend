@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto');
 
 /* ================= COACH BLOG ================= */
 const coachBlogSchema = new mongoose.Schema(
@@ -15,6 +16,7 @@ const UserSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true,
+      trim: true,
       unique: true
     },
 
@@ -23,17 +25,27 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      lowercase: true,
+      trim: true,
       unique: true
     },
 
     phone: {
       type: String,
       required: true,
+      trim: true,
       unique: true
+    },
+
+    address: {
+      type: String,
+      required: true,
+      trim: true
     },
 
     password: {
       type: String,
+      required: true,
       select: false
     },
 
@@ -52,8 +64,7 @@ const UserSchema = new mongoose.Schema(
 
     walletId: {
       type: String,
-      unique: true,
-      index: true
+      unique: true
     },
 
     transactionPin: {
@@ -102,26 +113,16 @@ const UserSchema = new mongoose.Schema(
       submittedAt: Date
     },
 
-    /* ================= FIND-A-COACH BLOG ================= */
+    /* ================= BLOG ================= */
     coachBlog: coachBlogSchema
   },
   { timestamps: true }
 );
 
 /* ================= WALLET ID GENERATOR ================= */
-UserSchema.methods.generateWalletId = function () {
-  if (!this.walletId) {
-    const timestamp = Date.now().toString();
-    const random = Math.random().toString(36).substring(2, 6).toUpperCase();
-    this.walletId = `TP${timestamp.slice(-6)}${random}`;
-  }
-  return this.walletId;
-};
-
-/* ================= PRE-SAVE ================= */
 UserSchema.pre('save', function (next) {
   if (this.isNew && !this.walletId) {
-    this.generateWalletId();
+    this.walletId = `TP${crypto.randomBytes(6).toString('hex').toUpperCase()}`;
   }
   next();
 });
